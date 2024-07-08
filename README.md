@@ -70,6 +70,12 @@ aws s3api create-bucket --bucket kops-abhi-storage --region us-east-1
 ```
 kops create cluster --name=demok8scluster.k8s.local --state=s3://kops-abhi-storage --zones=us-east-1a --node-count=1 --node-size=t2.micro --master-size=t2.micro  --master-volume-size=8 --node-volume-size=8
 ```
+Here the domain is used as "demok8scluster.k8s.local" local domain. But in production we use domains like amazon.com,google.com,xyz.com etc. Then we have configure this domain on Route 53.
+
+So we can configure using below.
+
+```
+aws route53 create-hosted-zone --name <dev.example.com> --caller-reference 1
 
 ### Important: Edit the configuration as there are multiple resources created which won't fall into the free tier.
 
