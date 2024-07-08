@@ -136,13 +136,13 @@ minikube start --memory=4096 --driver=hyperkit
 
 In minikube, it just creates a Virtual Machine on on top of it a single node kubernetes cluster is created. But in production environement, there will be master nodes and worker nodes in a cluster.
 
-To check nodes
+To check nodes,
 
 ```
 kubectl get nodes
 ```
 
-Creation of pods
+Creation of pods,
 
 ```
 vi simple-pod.yml
@@ -163,7 +163,7 @@ spec:
 ```
 kubectl create -f simple-pod.yml
 
-To view pods
+To view pods,
 
 ```
 kubectl get pods -o wide
