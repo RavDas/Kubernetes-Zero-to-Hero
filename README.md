@@ -98,3 +98,86 @@ After a few mins, run the below command to verify the cluster installation.
 kops validate cluster demok8scluster.k8s.local
 ```
 
+
+### Deploy an App using Kubernetes Pods
+
+Install kubectl binary with curl on Windows 
+
+```
+curl.exe -LO "https://dl.k8s.io/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+
+```
+Check kubectl installation
+
+```
+kubectl version
+```
+
+Here I am going to install a local Kubernetes cluster using minikube.
+
+Install minikube.
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+```
+Choose the command according to the OS and the architecture. Visit -> https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download
+
+To start the Kubernetes cluster
+
+```
+minikube start
+
+or
+
+minikube start --memory=4096 --driver=hyperkit
+
+```
+
+In minikube, it just creates a Virtual Machine on on top of it a single node kubernetes cluster is created. But in production environement, there will be master nodes and worker nodes in a cluster.
+
+To check nodes
+
+```
+kubectl get nodes
+```
+
+Creation of pods
+
+```
+vi simple-pod.yml
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+
+```
+kubectl create -f simple-pod.yml
+
+To view pods
+
+```
+kubectl get pods -o wide
+```
+
+Login into the kubernetes cluster
+
+```
+minikube ssh
+```
+And type
+
+```
+curl <ip address of the cluster>
+
+In real-time kubernetes cluster, we have ssh into the master/ worker nodes using their ip addresses.
+
