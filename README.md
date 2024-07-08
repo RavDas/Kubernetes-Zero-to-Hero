@@ -158,7 +158,7 @@ spec:
   - name: nginx
     image: nginx:1.14.2
     ports:
-    - containerPort: 80
+    - containerPort: 80 
 
 ```
 kubectl create -f simple-pod.yml
@@ -178,6 +178,23 @@ And type
 
 ```
 curl <ip address of the cluster>
+```
 
 In real-time kubernetes cluster, we have ssh into the master/ worker nodes using their ip addresses.
+
+To get all information of the pod,
+
+```
+kubectl describe pod nginx
+```
+
+To debug/view the logs of the pods,
+
+```
+kubectl logs nginx
+```
+here nginx is the name of the pod i have earlier created.
+
+
+To provide auto healing and auto scaling for the cluster, continue.......
 
