@@ -76,6 +76,7 @@ So we can configure using below.
 
 ```
 aws route53 create-hosted-zone --name <dev.example.com> --caller-reference 1
+```
 
 ### Important: Edit the configuration as there are multiple resources created which won't fall into the free tier.
 
